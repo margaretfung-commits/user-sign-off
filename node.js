@@ -1,10 +1,25 @@
 const express = require("express");
-const axios = require("axios");
 const nodemailer = require("nodemailer");
 
 const app = express();
 app.use(express.json());
 
+/* -----------------------------
+   1. EMAIL TRANSPORTER (PUT HERE)
+------------------------------*/
+const transporter = nodemailer.createTransport({
+    host: "zmail.shoalter.com.tw",
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
+/* -----------------------------
+   2. JIRA WEBHOOK ENDPOINT
+------------------------------*/
 app.post("/jira/approval-email", async (req, res) => {
     try {
         const { ticketKey, summary, requester } = req.body;

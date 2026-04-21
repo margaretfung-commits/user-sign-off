@@ -1,6 +1,13 @@
 {
-  "ticketKey": "{{issue.key}}",
-  "summary": "{{issue.summary}}",
-  "requester": "{{issue.Requester.emailAddress}}",
-  "description": "{{issue.description}}"
+  "name": "jira-webhook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.0",
+    "axios": "^1.6.0"
+  }
 }
